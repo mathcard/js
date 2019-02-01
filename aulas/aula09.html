@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Aula 09 -JS </title>	
+</head>
+<body onload="funcao()"> <!-- Chama função ao carregar a pagina  -->
+	<p>Modelos de Objetos do Documento</p>
+	<p id="demo"></p>
+	<p class="exemplo"></p>
+	<p class="exemplo"></p>
+	<p class="exemplo"></p>
+	<div class="exemplo"></div>
+	<img id="imagem" src="imagem.jpg" alt="Texto alternativo">
+	<h1 onclick="this.innerHTML = 'Obrigado!'">Clique aqui </h1>
+	<p id="demo2"> Alterando a cor...</p>
+	
+	<select name="" id="demo3" onchange="funcao2()">
+		<option value="opcao1">Opção 1</option>
+		<option value="opcao2">Opção 2</option>
+		<option value="opcao3">Opção 3</option>	
+	</select>
+	<h2 id="demo4" onmouseover="funcao3(this)" onmouseout="funcao4(this)">Passe o mouse aqui</h2>
+	<h2 id="demo4" onmousedown="funcao3(this)">ZZZZZZZZZZZZZZ</h2>
+	
+	<script>
+		/*
+		document - Objeto principal
+		getElementById - metodo
+		innerHTML - propriedade
+		'Texto do meu parágrafo' - Valor
+		*/
+		document.getElementById('demo').innerHTML = 'Texto do meu parágrafo';
+		
+		 // gera um array com todas as tags.
+		console.log(document.getElementsByTagName('p'));
+		
+		// Manipula valores das Tags
+		var x = document.getElementsByClassName('exemplo');
+		x[0].innerHTML = 'Texto 0'; 
+		x[1].innerHTML = 'Texto 1';
+		x[2].innerHTML = 'Texto 2';
+		
+		// Mais opções de filtros.
+		var y = document.querySelectorAll('p.exemplo');
+		console.log(y);
+		
+		/*
+		OUTROS TIPOS DE RETORNOS
+		document.baseURI / document.body / document.doctype / document.document.URI /
+		document.domain / document.head / document.inputEncoding / document.lastModified /
+		document..title / document.URL / document.forms / document.links / document.images /
+		document.scripts
+		*/
+		
+		//Escrever no Documento com document.write
+		//document.write(' Testando document.write');
+					
+		// Manipulando atributos
+		document.getElementById('imagem').alt = 'Trocando texto alternativo';	
+		
+		// Alterando CSS -> Pesquise por javascript style reference
+		document.getElementById('demo2').style.color = 'red';
+			
+		function funcao(){
+			alert('Pagina Carregada!')
+		}
+			
+		function funcao2(){
+			alert('Opção alterada.')
+		}
+		
+		function funcao3(elemento){
+			elemento.innerHTML = 'Ok, mouse sobre o elemento';
+		}
+		function funcao4(elemento){
+			elemento.innerHTML = 'Passe o mouse aqui';
+		}
+		
+		/* EVENTOS
+		onclick / onload / onchange / onmouser / onmouseout / onfocus / onmousedown / onmouseup
+		*/
+	</script>
+	
+	
+</body>
+</html>

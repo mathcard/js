@@ -1,0 +1,35 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $("#somar").click(function(){
+    var total = 0;
+    var desconto = $("#desconto").val() != "" ? $("#desconto").val() : 0;
+    $('.input').each(function(){
+      var valor = Number($(this).val());
+      if (!isNaN(valor)) total += valor;
+    });
+    total = total - desconto;
+    $(".resultado").html(total.toFixed(2));
+  });
+});
+</script>
+</head>
+<body>
+<strong>HTML</strong>
+<br />
+<input type="text" value="100.20" class="input" />
+<input type="text" value="200.20" class="input" />
+<input type="text" value="300.20" class="input" />
+<br><br>
+Desconto:<br>
+<input type="text" value="10.99" id="desconto" />
+
+<input type="button" value="SOMAR" id="somar" />
+<br /><br />
+<strong>JQuery</strong>
+<br />
+Resultado: R$ <span class="resultado">0.00</span>
+</body>
+</html>

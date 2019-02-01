@@ -1,0 +1,36 @@
+
+<button class="botao">Calcula</button>
+<input class="numero">
+<input class="tabuada">
+<span class="resultado"></span>
+
+<script>
+// Como era
+/*
+    var botao = document.querySelector('.botao');
+    var numero = document.querySelector('.numero');
+    var tabuada = document.querySelector('.tabuada');
+    var resultado = document.querySelector('.resultado');
+*/
+
+function busca(seletor){
+	return document.querySelector(seletor);
+}
+
+var botao = busca('.botao');
+var numero = busca('.numero');
+var tabuada = busca('.tabuada');
+var resultado = busca('.resultado');
+
+
+    botao.addEventListener('click', function() {
+
+        resultado.textContent = numero.value * tabuada.value;
+
+    });
+/*
+function mult(numero,tabuada){
+	var resultado = numero * tabuada;
+}
+	*/
+</script>

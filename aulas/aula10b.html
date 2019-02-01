@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	
+	<title>Aula 10 -JS</title>
+	<h2>BOM - Manipulção de objetos do Browser</h2>
+	
+	<style>
+		
+	</style>	
+</head>
+<body>
+	<div id="msg"></div>
+	<div id="msg2"></div>
+	<!-- Botões Avançar e Voltar do Browser feitos com JS --__>
+	<input type="button" value="Avançar" onclick="window.history.forward();"/> 
+	<input type="button" value="Voltar" onclick="window.history.back();"/>  -->
+	
+	<!-- NÃO EXIBER A MSG TIMEOUT SE A FUNÇÃO FOR CHAMADA ANTES -->
+	<input type="button" value="Cancelar timeout" onclick="clearTimeout(msg);"/> 
+	<input type="button" value="Cancelar interval" onclick="clearInterval(msg2);"/> 
+	
+	<script>		
+	// GRAVANDO E LENDO INFORMAÇÕES NO BROWSER
+	//	window.localStorage.setItem('nome', 'Ricardo'); <!-- Grava dados no Browser até limpar cache -->
+		//window.sessionStorage.setItem('nome2', 'Pedro'); <!-- Grava dados no Browser até fechar sessão -->
+	//	document.getElementById('msg').innerHTML = window.localStorage.getItem('nome'); <!-- Chama o valor gravado -->
+		
+	// ABRINDO NOVAS JANELAS NO BROWSER
+		//window.open('http://globo.com.br','GLOBO', 'width=500, height=400'); //Abre nova Janela 
+	//	var novajanela = window.open('','', 'width=500, height=400');
+	//	novajanela.document.write('Isso é um texto para minha nova janela popup');
+	//	novajanela.opener.document.write('Isso é um texto para minha janela principal');
+		
+		// Executa função apos um periodo fixado  
+		/*
+		var msg = setTimeout(msgtimeout, 3000);
+		function msgtimeout(){		
+			console.log('Msg via timeout');
+		}
+		
+		var msg2 = setInterval(msginterval, 1000);
+		function msginterval(){		
+			console.log('Msg via interval');
+		}
+		*/
+		//VERIFICAR SE O USUARIO ENTROU NA PAGINA
+		//var msg = setTimeout(msgtimeout, 3000);
+		function msgtimeout(){
+			document.getElementById('msg').innerHTML = 'Obrigado pela visita';
+			console.log('Msg via timeout');
+		} 
+		//VERIFICAR SE O USUARIO NAVEGA NA PAGINA
+		var intervalo = setInterval(verificaFoco, 1000);
+		var contador = 0;
+		function verificaFoco(){
+			if(document.hasFocus()){
+				contador++;
+				console.log(contador);
+				if(contador >= 10){
+					msgtimeout();
+					clearInterval(intervalo);
+				}
+			}
+		}
+						
+		//console.log(document);
+		//console.log(window.location.href); mostra diretorio da pagina
+		
+	
+	</script>
+	
+</body>
+</html>

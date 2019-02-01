@@ -1,0 +1,24 @@
+label, input[type=submit], input[type=text], textarea{
+	display: block;
+}
+
+textarea{
+	width: 300px;
+	height: 80px;
+}
+input[type=submit]{
+	background: #333333;
+	color: #ffffff;
+	cursor: pointer;
+	padding: 10px 10px;
+	border: 0;
+}
+input[type=submit]:hover{
+	background: #ff6600;
+}
+input[type=text]:hover{
+	background: #ff6600;
+}
+
+/* Definindo estilo de apenas um ID.            ID = #         */
+/* Todos (a) com classe link serão afetados.     CLASSE = .     */

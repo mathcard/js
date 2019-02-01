@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Aula 07 -JS</title>
+</head>
+<body>
+	<h1>Estrutura de Repetição</h1>
+	<script>		
+	/* OPERADORES LOGICOS
+	== igual a
+	=== igual em valor ou tipo
+	!= diferente de
+	!== diferente em valor e tipo
+	<= menor ou igual
+	>= maior ou igual
+	&& e
+	|| ou
+	! não
+	*/
+		
+		/* IF AND ELSE
+		var idade =16;
+		var situacao = (idade>=18)?'Maioridade':'Menor';
+		console.log(situacao);
+	
+		var n=5;
+		if(n>5){
+			console.log('Primeira Condição verdadeira');
+		} else if (n==5){
+			console.log('Segunda Condição verdadeira');
+		}
+		else{
+			console.log('Condição Falsa');
+		}
+		*/
+		
+		
+		// SWITCH 
+		/*
+		var diasemana = new Date().getDay();
+		switch(diasemana){
+			case 6:
+				console.log('Sabado');
+				break;
+			case 0:	
+				console.log('Domingo');				
+				break;
+			default:
+				console.log('Dia de feira');				
+		}
+		*/
+		
+		// FOR
+		/*
+		var linguagens = ['PHP', 'JAVA', 'C++', 'ASP'];
+		for(i=0; i<linguagens.length; i++){
+			if(i==1) continue;
+			console.log(linguagens[i]);
+		}
+		*/
+	
+		//WHILE
+		var contador = 2;
+		var linguagens = ['PHP', 'JAVA', 'C++', 'ASP', 'DELPHI'];
+	
+		while (contador < 7){
+			console.log(linguagens[contador]);
+			contador ++;
+		}
+		
+		do{
+			console.log(linguagens[contador]);
+			contador ++;		
+		}while(contador < linguagens.length)
+		
+		
+		
+		
+		
+	</script>
+	
+</body>
+</html>

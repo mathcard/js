@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#btn1").click(function(){
+        $(".paragrafos").append(" <b>Texto incluído no parágrafo </b>.");
+    });
+
+    $("#btn2").click(function(){
+        $("ol").append("<li>Item incluído na lista </li>");
+    });
+});
+</script>
+</head>
+<body>
+
+<p class="paragrafos">Primeiro parágrafo.</p>
+<p class="paragrafos">Segundo parágrafo.</p>
+<p> terceiro </p>
+
+<ol>
+  <li>item 1</li>
+  <li>item 2</li>
+  <li>item 3</li>
+</ol>
+
+<button id="btn1">Incluir texto</button>
+<button id="btn2">Incluir Item</button>
+
+</body>
+</html>

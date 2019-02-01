@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>hello</h1>
+<p>O primeiro parâmetro é o método ou função que desejamos invocar. O segundo parâmetro é o contexto que o método ou função adotará, ou seja, o valor que será assumido pelo this. Por fim, o último parâmetro é um array que contém todos os parâmetros que o método passado como primeiro parâmetro receberá. Como ele não recebe parâmetro nenhum, passamos um array vazio.</p>    
+
+    <script>
+        let objeto1 = {
+            nome: 'Bob'
+        };
+        let objeto2 = {
+            nome: 'Leo'
+        };
+        function exibeNome() {
+        alert(this.nome);
+        }
+        Reflect.apply(exibeNome, objeto2, []); // exibe 'Leo'
+    </script>
+</body>
+</html>
+
+

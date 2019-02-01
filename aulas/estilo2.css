@@ -1,0 +1,20 @@
+h1{
+	color: #ff6600; /*  cor */
+	letter-spacing: -1px; /* espaçamento entre letras  */
+	text-transform: capitalize; /*capitalize; uppercase(maiusculo), lowercase (minusculo), capitalize(primeira letra maiusculo);*/
+	width: 450px; /*largura utilizada*/
+	text-shadow: 1px 2px 1px black; /*sombras - largura, altura, foco*/
+}
+
+p{
+	text-indent: 50px; /*paragrafo*/
+	width: 550px; /*largura utilizada*/
+	/* text-align: left; /*alinhamento */
+	font-size: 18px; /*  tamanho da fonte */
+	font-family: verdana, arial, sans-serif; /* escolhe a fonte*/	
+}
+/* USAR FONTES ONLINE ACESSAR -> www.google.com/fonts
+colar o Link no html e o css no css
+
+
+*/

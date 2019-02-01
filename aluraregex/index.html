@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Alura - Expressões regulares</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css"> 
+</head>
+
+<body class="container">
+    
+    <h1 class="text-left">Expressões regulares</h1>
+    
+    <form class="form" >
+        
+        <div class="form-group">
+            <label for="target">Target string (alvo)</label>
+            <input type="text" id="target" class="form-control" value="" autocomplete="off" required autofocus placeholder="Digite um target" />        
+        </div>    
+        
+        <div class="form-group">
+            <label for="pattern">Pattern (expressão regular)</label>
+            <input type="text" id="pattern" class="form-control" value="" autocomplete="off" required  placeholder="Digite um pattern"/>
+        </div>
+
+        <div class="form-group">                
+            <button class="btn btn-primary" onclick="executa(event)">Executar Regex</button>
+        </div>
+
+        <div class="checkbox">
+            <label><input type="checkbox" id="mostraIndex" value="true" />Mostra índice </label>
+            <label></label>
+            <label><input type="checkbox" id="mostraGrupos" value="true" />Mostra grupos </label>
+        </div>
+
+        <div class="form-group">
+            <label for="resultado" id="labelResultados">Matches (resultados)</label>
+            <input type="text" id="resultado" class="form-control" value="" readonly />
+        </div>
+
+        <div class="form-group">
+            <label for="resultado" id="labelHighlight">Highlight</label>
+            <div id="highlightText" style="font-size:30px;"></div>
+        </div>
+        
+    </form>
+	
+	<table>
+					<thead>
+						<tr>
+							<th>Tipo</th>
+							<th>Informação</th>
+							<th>Regex</th>
+							<th>OBS</th>
+							
+						</tr>
+					</thead>
+					<tbody id="tabela-regex">
+						<tr class="regex">
+							<td class="info-tipo">CNPJ</td>
+							<td class="info-info">15.123.321/8883-22</td>
+							<td class="info-regex">\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}</td>
+							<td class="info-obs">easy</td>
+						</tr>
+
+						<tr class="regex">
+							<td class="info-tipo">Buscanco um IP</td>
+							<td class="info-info">192.18.78.1</td>
+							<td class="info-regex">\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}</td>
+							<td class="info-obs">\d{1,3} busca 1 a 3 digitos</td>
+						</tr>
+						
+						<tr class="regex">
+							<td class="info-tipo">CEP </td>
+							<td class="info-info">76170-000</td>
+							<td class="info-regex">\d{5}\-\d{3}</td>
+							<td class="info-obs">easy</td>
+						</tr>
+						
+						<tr class="regex">
+							<td class="info-tipo">Telefone </td>
+							<td class="info-info">(21) 3216-2345</td>
+							<td class="info-regex">\(\d{2}\) \d{4}-\d{4}</td>
+							<td class="info-obs">easy</td>
+						</tr>
+						<tr class="regex">
+							<td class="info-tipo">CPF com marcação</td>
+							<td class="info-info">700.366.111-07</td>
+							<td class="info-regex">\d{3}\.\d{3}\.\d{3}\-\d{2}</td>
+							<td class="info-obs">easy</td>
+						</tr>
+						
+						<tr class="regex">
+							<td class="info-tipo">CPF sem pontuação</td>
+							<td class="info-info">70036611107</td>
+							<td class="info-regex">\d{3}\.?\d{3}\.?\d{3}\-?\d{2}</td>
+							<td class="info-obs">\d{3}\.? O ponto é opcional .?</td>
+						</tr>
+						<tr class="regex">
+							<td class="info-tipo">CPF traço ou ponto</td>
+							<td class="info-info">700.366.111.07</td>
+							<td class="info-regex">\d{3}\.?\d{3}\.?\d{3}[.-]?\d{2}</td>
+							<td class="info-obs">[.-]? Tera um ponto ou traço ou nenhum</td>
+						</tr>
+						<tr class="regex">
+							<td class="info-tipo">Datas</td>
+							<td class="info-info">28 de Novembro de 2018</td>
+							<td class="info-regex">[1-3]?\d\s+de\s+[A-Z][a-zç]{3,8}\s+de\s+[12]\d{3}</td>
+							<td class="info-obs">s+ são espaços, [a-zç] De A a Z</td>
+						</tr>
+						<tr class="regex">
+							<td class="info-tipo">PLACA DE CARRO</td>
+							<td class="info-info">OGZ-4788</td>
+							<td class="info-regex">[A-Z]{3}-\d{4}</td>
+							<td class="info-obs">[A-Z]{3} - São três letras maiusculas</td>
+						</tr>
+						<tr class="regex">
+							<td class="info-tipo">Notas</td>
+							<td class="info-info">De 7.2 a 7.9</td>
+							<td class="info-regex">[7]\.[2-9]</td>
+							<td class="info-obs"></td>
+						</tr>
+						<tr class="regex">
+							<td class="info-tipo">Nome de usuario</td>
+							<td class="info-info">Usuario, 1º letra, max 10 caracteres</td>
+							<td class="info-regex">[a-zA-Z][a-zA-Z0-9]{0,9}</td>
+							<td class="info-obs"></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<table>
+					<thead>
+						<tr>
+							<th>QUANTIFILERS</th>
+							<th>CLASSES</th>
+							<th>ANCORAS</th>
+							<th>GRUPOS</th>
+							
+						</tr>
+					</thead>
+					<tbody id="tabela2">
+						<tr class="regex2">
+							<td class="info-quant">? - Zero ou uma vez</td>
+							<td class="info-classes">[A-Z] - letras de A a Z</td>
+							<td class="info-ancoras">^ $ \b</td>
+							<td class="info-grupos">()parentes</td>
+						</tr>
+						<tr class="regex2">	
+							<td class="info-quant">+ - uma ou mais</td>
+							<td class="info-classes">[123]- 1,2 ou 3</td>
+							<td class="info-ancoras">\baaa\b - pegar tudo com aaa(inicio ou fim)</td>
+							<td class="info-grupos">[1-3]?\d\s+de\s+[A-Z][a-zç]{3,8}\s+(?:de\s+)([12]\d{3})</td>
+						</tr>
+						
+						<tr class="regex2">
+							<td class="info-quant">* - zero ou mais vezes</td>
+							<td class="info-classes">\d - todos os digitos [0-9]</td>
+							<td class="info-ancoras">^file - busca file no inicio</td>
+							<td class="info-grupos">?:</td>
+						</tr>
+						
+						<tr class="regex2">	
+							<td class="info-quant">{3} - exatamente n vezes</td>
+							<td class="info-classes">\s - whitescape [ \t\r\n\f]</td>
+							<td class="info-ancoras">$html - busca html no final</td>
+						</tr>
+							
+						<tr class="regex2">
+							<td class="info-quant">{3,} - no mínimo n vezs</td>
+							<td class="info-classes">\w - wordchar [A-Za-z0-9_]</td>
+						</tr>
+							
+						<tr class="regex2">	
+							<td class="info-quant">{3,10} - no mín n+1 vezes, no máx m vezes</td>
+						</tr>
+						
+						
+					</tbody>
+				</table>
+				
+			bowser1@alura.com.br extrai bowser1 - no min 5 max 15 = ([a-z.\d]{4,14})@(?:caelum.com.br|alura.com.br)
+			email - ^([\w-]\.?)+@([\w-]+\.)+([A-Za-z]{2,4})+$
+			<!--  <h1 class="text-left"> Expressões Regulares</h1> PARA GRAVAR APENAS TEXTO DENTRO DO H1 <h1.+?>[\w]+</h1>   <(h1|h2).+?>[\s\wçõã]+</\1> (h1|h2) -> Aceita h1 ou h2. \1 Referencia o primeiro grupo  -->
+			<h1[^>]+> pega até o >
+			Z171PZ7AZ23PZ7819AZ78GZ1AZ99IZ34O - MENSAGEM CRIPTOGRAFADA[^Z\d]
+	<br />
+    <br />
+    <br />
+    <br />
+
+    <div class="form-group">
+
+      <textarea class="form-control" rows="5" id="comment"></textarea>
+
+    </div>
+   <br />
+
+    <script src="js/regex.js"></script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Aula 03 -JS</title>
+</head>
+<body>
+	<script>		
+		/*	
+		função é um bloco de código que executa determinada tarefa, somente 
+		executada quando chamada.
+		*/		
+		var msg = 'Mensagem padrão'; // Variavel Global
+		function alerta(mensagem){
+			//alert(mensagem);
+			msglocal = mensagem;
+		}
+		function metade(num){
+			return num/2;
+		}
+		function dividir(num, por = 2){ //Caso não tenha número o padrão é 2;
+			return num/por;
+		}
+	//	alerta('A metade e 15 é: '+ metade(15) +' E o resultado da divisão é '+dividir(10,4) ) ;
+		//alert(metade(80) + msg);
+		
+		alerta('teste');
+	//	alert(msglocal);
+	</script>
+	
+</body>
+</html>

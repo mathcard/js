@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<h2>BOM - Manipulção de objetos do Browser</h2>
+	<title>Aula 10 -JS</title>
+	<style>
+		.zebrada{background: silver;}
+	</style>	
+</head>
+<body>
+	<table class="zebra">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Fone</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Wolverine</th>
+				<th>0xx00 00000-0000</th>
+			</tr>
+			<tr>
+				<th>Magneto</th>
+				<th>0xx00 00000-0000</th>
+			</tr>
+			<tr>
+				<th>Charles</th>
+				<th>0xx00 00000-0000</th>
+			</tr>
+			<tr>
+				<th>Mistica</th>
+				<th>0xx00 00000-0000</th>
+			</tr>
+			<tr>
+				<th>Dentes de Sabre</th>
+				<th>0xx00 00000-0000</th>
+			</tr>
+		</tbody>
+	</table>
+	
+	<script>		
+		// Executa o codigo quando a janela for carregada
+		window.onload=function(){
+			var zebrar = document.querySelectorAll('.zebra tbody tr');
+			for (var i=0; i<zebrar.length; i+=2){
+				zebrar[i].className = 'zebrada';
+			}
+		} 
+		//console.log(document);
+		//console.log(window.location);
+	</script>
+	
+</body>
+</html>

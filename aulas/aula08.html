@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Aula 08 -JS </title>	
+</head>
+<body>
+	<h1>Tratamento de exceções</h1>
+	<h3>TRY - CATCH </h3>
+	<P>Digite um número de 10 a 20</p>
+	<input type="text" id="numero">
+	<button onclick="verifica()">verificar</button>
+	<p id="msg"></p>
+	<script>		
+		function verifica(){
+			var x = document.getElementById('numero').value;		
+			try{
+				if(x=='') throw 'Informe um valor';
+				if(isNaN(x)) throw 'Você precisa informar um número';
+				x = Number(x);
+				if(x<10 || x>20) throw 'Digite um valor entre 10 e 20';				
+				document.getElementById('msg').innerHTML = "Valor está correto!";						
+			}catch(erro){
+				document.getElementById('msg').innerHTML = 'Erro: '+erro;
+			} finally{
+				document.getElementById('numero').value='';		
+			}
+			
+		}	
+	</script>
+	
+</body>
+</html>

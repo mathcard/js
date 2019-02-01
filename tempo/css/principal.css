@@ -1,0 +1,41 @@
+.linha{
+	width: 960px;
+	margin: 0 auto;
+	overflow: auto;
+	padding: 5px 0;
+	
+}
+.coluna{
+	padding: 0 10px;
+	float: left;	
+}
+
+.col1{
+	width:600px;	
+}
+
+.col2{
+	width:340px;	
+}
+
+
+.header{
+	background: #dee3e6;	
+}
+
+.mostrar{
+	font-family: 'Pacifico', cursive;
+	font-size: 32pt;
+	color: orange;
+}
+
+#rodape{
+	background: #dee3e6;	
+	text-align: center;
+	font-family: 'Lobster', cursive;
+}
+
+img{
+	width: 100px;
+	height: 100px;
+}

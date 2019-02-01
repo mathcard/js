@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang=pt-br">
+
+<!--
+
+< AKI TEM UM ESPAÇO?php require "modelo.php";
+#antigo T02f.php
+ ?>
+<script type="text/javascript">
+/* Máscaras ER */
+function mascara(o,f){
+    v_obj=o
+    v_fun=f
+    setTimeout("execmascara()",1)
+}
+function execmascara(){
+    v_obj.value=v_fun(v_obj.value)
+}
+function mtel(v){
+    v=v.replace(/\D/g,"");             //Remove tudo o que não é dígito
+    v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+    v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
+    return v;
+}
+function id( el ){
+	return document.getElementById( el );
+}
+window.onload = function(){
+	id('cl_fone1').onkeypress = function(){
+		mascara( this, mtel );
+	}
+	id('cl_fone2').onkeypress = function(){
+		mascara( this, mtel );
+	}
+}
+</script>
+ -->
+ <head>
+	<meta charset = "UTF8" />
+	<title> Home Page </title>
+	<link rel="stylesheet" href="css/normalize.css" />
+	<link rel="stylesheet" href="../css/estiloteste.css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<script src="../js/scripts.js"></script>	
+</head>
+<body>
+	<div class="header">
+		<div class="linha">
+			<header>
+				<div class="coluna col4">
+					<h1 class="logo">RBMath</h1>
+				</div>
+				<div class="coluna col8">
+					<nav id="teste">
+						<ul class="menu inline sem-marcador" >
+							<li><a href="index.html">home</a></li>
+							<li><a href="clientes.html">clientes</a></li>
+							<li><a href="servicos.html">serviços</a></li>
+							<li><a href="sobre.html">sobre</a></li>
+							<li><a href="contato.html">contato</a></li>
+						</ul>
+					</nav>	
+				</div>
+			</header>
+		</div>
+	</div>	
+ 
+	<div class="linha">
+		<div class="formulario">
+			<div class="coluna col8">      
+			<h1>Cadastrar Fornecedor</h1>
+				<form id="form" class="form" method="post" action="inFornecedor.php">
+					<div style="width:500px" class="main-login-form">
+						<div class="login-group">                        
+                            <label for="for_nome" class="sr-only">Nome</label>
+                            <input type="text" class="form-control" id="for_nome" name="for_nome" placeholder="Nome" maxlength="50" required />
+
+                            <label for="for_aten" class="sr-only">Atendente</label>
+                            <input type="text" class="form-control" id="for_aten" name="for_aten" placeholder="Atendente" maxlength="40" required />
+
+                            <label for="for_desc" class="sr-only">Descrição</label>
+                            <input type="text" class="form-control" id="for_desc" name="for_desc" placeholder="Descrição" maxlength="60" required />
+                        
+                            <label for="cl_fone1" class="sr-only">Telefone 1</label>
+                            <input type="text" class="form-control" id="cl_fone1" name="cl_fone1" placeholder="Fone 1" maxlength="15" required />
+                        
+							<label for="cl_fone2" class="sr-only">Telefone 2</label>
+                            <input type="text" class="form-control" id="cl_fone2" name="cl_fone2" placeholder="Fone 2" maxlength="15" required />
+                        
+                            <label for="cl_email" class="sr-only">Email</label>
+                            <input type="text" class="form-control" id="cl_email" name="cl_email" placeholder="Email" maxlength="80" required />
+                        
+                            <label for="cl_cep" class="sr-only">CEP</label>
+                            <input type="number" class="form-control" id="cl_cep" name="cl_cep" placeholder="CEP" required />
+                        
+                            <label for="cl_rua" class="sr-only">Logradouro</label>
+                            <input type="text" class="form-control" id="cl_rua" name="cl_rua" placeholder="Logradouro" maxlength="60" required />
+                        
+							<label for="cl_comp" class="sr-only">Complemento</label>
+                            <input type="text" class="form-control" id="cl_comp" name="cl_comp" placeholder="Complemento" maxlength="60" required />
+                        
+                            <label for="cl_numend" class="sr-only">Número</label>
+                            <input type="text" class="form-control" id="cl_numend" name="cl_numend" placeholder="Número" maxlength="10" required />
+                        
+                            <label for="cl_bairro" class="sr-only">Bairro</label>
+                            <input type="text" class="form-control" id="cl_bairro" name="cl_bairro" placeholder="Bairro" maxlength="40" required />
+                        
+							<label for="cl_city" class="sr-only">Cidade</label>
+							<input type="text" class="form-control" id="cl_city" name="cl_city" placeholder=" Cidade" maxlength="50" required />
+
+							<input type="submit" class="login-button">
+							<a href="listarCliente.php">Voltar</a>
+							<a href="#" onclick="teste();" >Bagunça</a>
+						</div>
+					</div>										
+				</form>  
+			</div>    
+		</div>
+	</div>
+
+	<div class="footer">
+		<div class="linha">
+			<footer>
+				<div class="coluna col12">
+					<span>&copy; 2018 - RMMath Aulas de hTML</span>
+				</div>
+			</footer>
+		</div>
+	</div>
+</body>
+<!--
+<script type="text/javascript" >
+        $(document).ready(function() {
+            function limpa_formulário_cep() {
+                // Limpa valores do formulário de cep.
+                $("#cl_rua").val("");
+                $("#cl_comp").val("");
+                $("#cl_bairro").val("");
+                $("#cl_city").val("");
+                $("#cl_numend").val("");                
+            }            
+            //Quando o campo cep perde o foco.
+            $("#cl_cep").blur(function() {
+
+                //Nova variável "cep" somente com dígitos.
+                var cep = $(this).val().replace(/\D/g, '');
+
+                //Verifica se campo cep possui valor informado.
+                if (cep != "") {
+
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
+
+                    //Valida o formato do CEP.
+                    if(validacep.test(cep)) {
+
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                        $("#cl_rua").val("...");
+                        $("#cl_comp").val("...");
+                        $("#cl_bairro").val("...");
+                        $("#cl_city").val("...");
+                        $("#cl_numend").val("...");
+
+                        //Consulta o webservice viacep.com.br/
+                        $.getJSON("//viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                            if (!("erro" in dados)) {
+                                //Atualiza os campos com os valores da consulta.
+                                $("#cl_rua").val(dados.logradouro);
+                                $("#cl_comp").val(dados.complemento);
+                                $("#cl_bairro").val(dados.bairro);
+                                $("#cl_city").val(dados.localidade);
+                                $("#estado select").val(dados.uf);
+                                $("#cl_numend").val(dados.gia);
+
+                            } //end if.
+                            else {
+                                //CEP pesquisado não foi encontrado.
+                                limpa_formulário_cep();
+                                alert("CEP não encontrado.");
+                            }
+                        });
+                    } //end if.
+                    else {
+                        //cep é inválido.
+                        limpa_formulário_cep();
+                        alert("Formato de CEP inválido.");
+                    }
+                } //end if.
+                else {
+                    //cep sem valor, limpa formulário.
+                    limpa_formulário_cep();
+                }
+            });
+        });
+    </script> -->
+</html>
