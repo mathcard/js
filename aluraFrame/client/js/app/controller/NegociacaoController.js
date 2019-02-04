@@ -31,7 +31,8 @@ class NegociacaoController{
 		this._inputValor = $('#valor');
 		this._listaNegociacoes = new ListaNegociacoes((model) => this._negociacoesView.update(model));
 
-		
+		// Proxy
+		//O target é o objeto real, que é encapsulado pelo proxy. O prop é a propriedade que está sendo lida. O receiver é uma referência ao próprio proxy.
 		let self = this;
         this._listaNegociacoes = new Proxy(new ListaNegociacoes(), {      
             get(target, prop, receiver) {
@@ -45,8 +46,7 @@ class NegociacaoController{
                 return Reflect.get(target, prop, receiver);
             }          
         });
-          //  lista.adiciona(new Negociacao(new Date(), 1, 100));
-          //lista._negociacoes;
+		
 
 
 		this._negociacoesView = new NegociacoesView($('#negociacoesView'));
