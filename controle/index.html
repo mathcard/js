@@ -1,125 +1,86 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-	<head>
-		<meta charset="UTF-8">
-		<title>Home Page</title>
-		<link rel="icon" href="favicon.ico" type="image/x-icon">
-		<link rel="stylesheet" type="text/css" href="css/reset.css">
-		<link rel="stylesheet" type="text/css" href="css/index.css">
-		<script>
-			//alert("Olá Mundo");
-			//console.log("Oi mundo");
-			//console.log(document);
-		</script>
-		
-	</head>
-	<body>
 
-		<header>
-			<div class="container">
-				<h1 class="titulo">Aparecida Nutrição</h1>
-			</div>
-		</header>
-		<main>
-			<section class="container">
-				<h2>Meus pacientes</h2>
-				<label for="filtrar-tabela">Filtro</label>
-				<input type="text" name="filtro" id="filtrar-tabela">				
-				<table>
-					<thead>
-						<tr>
-							<th>Nome</th>
-							<th>Peso(kg)</th>
-							<th>Altura(m)</th>
-							<th>Gordura Corporal(%)</th>
-							<th>IMC</th>
-						</tr>
-					</thead>
-					<tbody id="tabela-pacientes">
-						<tr class="paciente" id="primeiro-paciente">
-							<td class="info-nome">Paulo</td>
-							<td class="info-peso">100</td>
-							<td class="info-altura">1.70</td>
-							<td class="info-gordura">10</td>
-							<td class="info-imc">0</td>
-						</tr>
+<head>
+<p id="resultado"></p> 
+<script type="text/javascript" src="js/jquery.js" ></script>
+<!-- <script type="text/javascript" src="js/funcoes.js"></script> -->
 
-						<tr class="paciente" >
-							<td class="info-nome">João</td>
-							<td class="info-peso">8000</td>
-							<td class="info-altura">-1.72</td>
-							<td class="info-gordura">40</td>
-							<td class="info-imc">0</td>
-						</tr>
-						<tr class="paciente" >
-							<td class="info-nome">Joana</td>
-							<td class="info-peso">80</td>
-							<td class="info-altura">1.62</td>
-							<td class="info-gordura">40</td>
-							<td class="info-imc">0</td>
-						</tr>
-						
-						<tr class="paciente" >
-							<td class="info-nome">Erica</td>
-							<td class="info-peso">54</td>
-							<td class="info-altura">1.64</td>
-							<td class="info-gordura">14</td>
-							<td class="info-imc">0</td>
-						</tr>
+<script>
+	var quant = document.getElementsByName("valor[]");
+	var teste = [];
 
-						<tr class="paciente">
-							<td class="info-nome">Douglas</td>
-							<td class="info-peso">85</td>
-							<td class="info-altura">1.73</td>
-							<td class="info-gordura">24</td>
-							<td class="info-imc">0</td>
-						</tr>
-						<tr class="paciente" >
-							<td class="info-nome">Tatiana</td>
-							<td class="info-peso">46</td>
-							<td class="info-altura">1.55</td>
-							<td class="info-gordura">19</td>
-							<td class="info-imc">0</td>
-						</tr>
-					</tbody>
-				</table>
-				<span id="erro-ajax" class="invisivel">Erro ao buscar os pacientes.</span>
-				<button id="buscar-pacientes" class="botao bto-principal">Buscar</button>
-			</section>
-			<br>
-			<section class="container">
-			<h2 id="titulo-form">Adicionar novo paciente</h2>
-			 <!-- Caso encontrar algum erro no JS, sera escrito aqui.  -->
-			<ul id="mensagens-erro">							
-			</ul>
-			<form id="form-adiciona">
-				<div class="grupo">
-					<label for="nome">Nome:</label>
-					<input id="nome" name="nome" type="text" placeholder="digite o nome do seu paciente" class="campo">
-				</div>
-				<div class="grupo">
-					<label for="peso">Peso:</label>
-					<input id="peso" name="peso" type="text" placeholder="digite o peso do seu paciente" class="campo campo-medio">
-				</div>
-				<div class="grupo">
-					<label for="altura">Altura:</label>
-					<input id="altura" name="altura" type="text" placeholder="digite a altura do seu paciente" class="campo campo-medio">
-				</div>
-				<div class="grupo">
-					<label for="gordura">% de Gordura:</label>
-					<input id="gordura" type="text" placeholder="digite a porcentagem de gordura do seu paciente" class="campo campo-medio">
-				</div>
-		
-				<button id="adicionar-paciente" class="botao bto-principal">Adicionar</button>
-				
-			</form>
-			</section>
-			
-		</main>
-	<script src="js/calculaImc.js"></script>
-	<script src="js/form.js"></script>
-	<script src="js/removerPacientes.js"></script>
-	<script src="js/filtra.js"></script>	
-	<script src="js/buscar-pacientes.js"></script>
+	function somarValores(){
+	var soma = 0;
+
+		for (var i=0; i<quant.length; i++){
+			teste[i] = parseFloat(quant[i].value, 10);            
+        	soma += teste[i];
+ 		}  
+  			//#var aux = " R$";
+			//document.getElementById("resultado").innerHTML = soma+aux;
+			document.getElementById("resultado").innerHTML = soma;
+			document.getElementById("valorParcelas").value = document.getElementById("resultado").innerHTML;   
+	}
+
+	function validVal(){
+		var valorvalid = document.getElementById("valorTotal").value;
+		var valorparc = parseFloat(document.getElementById("valorParcelas").value);
+
+		if(valorvalid!=valorparc){
+			alert('O Valor das parcelas não corresponde com o valor do contrato!');
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+</script>
+<!--<link rel="stylesheet" type="text/css" href="css/estilo.css" /> -->
+</head>
+<body>
+	<form action="inParcelas.php" role="form" id="formExampleAdd" method="post" accept-charset="utf-8">
+	<table class="tabelaEditavel" id="products-table">	
+	<tbody>
+		<tr>
+			<th>Parcelas</th>
+			<th>Emissão</th>
+			<th>Vencimento</th>
+			<th>Valor</th>
+			<th>Tipo Pagameno</th>	
+			<th>Ações</th>	
+		</tr>
+		<tr>
+			<td><input name="parcela[]" class="form-control" type="number" id="parcela" min="0"  required /></td>
+			<td><input name="emissao" class="form-control" type="date" id="emissao" required /></td>
+			<td><input name="venc[]" class="form-control" type="date" id="venc"  required /></td>
+			<td><input name="valor[]" onblur="somarValores()" class="form-control" type="number" id="valor" min="1" step="0.01" required /></td>
+			<td><input name="formapg[]" class="form-control" type="text" id="formapg"  maxlength="20" required /></td>							
+			<td><button type="button">Remover</button></td>
+		</tr>
+	</tbody>
+		<tfoot>	 
+			<tr>
+			<button class="btn btn-primary" onclick="AddTableRow()" type="button">Adicionar Parcelas</button>		
+			</tr>
+		</tfoot>
+	</table>
 	</body>
-</html>
+		<div class="form-group">
+		<br><br><input class="btn btn-primary" type="submit" onclick="return validVal();" value="Salvar">
+		</div>
+		<table class="painel" >	
+	<tbody>
+		<tr>
+			<th>Total(R$)</th>
+			<th>Parcelas(R$)</th>
+		</tr>
+		<tr>
+			<td><input type="text" id="valorTotal" /></td>
+			<td><input type="text" id="valorParcelas" /></td>
+		</tr>
+	</tbody>	
+	</table>
+			<script>			
+				document.getElementById("valorTotal").value = texto;
+			</script>
+		</div>	
+</form>
