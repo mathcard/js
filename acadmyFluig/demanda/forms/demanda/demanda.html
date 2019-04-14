@@ -1,0 +1,97 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form">
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title"><i class="fluigicon fluigicon-user icon-md"></i>Requisitante</h3>
+	</div>
+
+	<div class="panel-body">
+	<div class="form-group col-md-6" >
+		<div class="displayChange">
+			<label for="dtSolicita">Data da Solicitação</label>																												
+			<div class="row">
+				<input type="date" name="dtSolicita" id="dtSolicita" />										
+			<!-- 	<input type="time" name="hrSolicita" id="hrSolicita" onchange="javascript: dataRetroativa(); "/>  -->		
+					<input type="time" name="hrSolicita" id="hrSolicita" />
+				<input type="hidden" id="dataSolicitacao" name="dataSolicitacao" value="">								
+				<input type="hidden" id="horaSolicitacao" name="horaSolicitacao" value="">	
+			</div>
+		</div>	
+	</div>
+		<label for="tipoProduto">Produto</label>
+			<!-- <select id="tipoProduto" name="tipoProduto" onChange="javascript: buscarCategoria();" required /> -->
+			<select id="tipoProduto" name="tipoProduto" required >
+				<option value="Produto">Produto</option>									
+			</select>
+		
+		<label for="categoria">Categoria</label>
+			<!--  <select id="categoria" name="categoria" onChange="javascript: buscarSubCategoria();" required />  -->
+		<select id="categoria" name="categoria" required />
+				<option>Opções:</option>										
+			</select>
+		
+		<label for="subCategoria">Sub Categoria</label>
+			<select id="subCategoria" name="subCategoria" required />
+				<option>Opções:</option>										
+			</select>
+		
+		<p><b>Tipo de Solicitante</b></p>																																				  
+			<input type="radio" id="Aluno" name="tipoSolicitante" value="AL"> Aluno											
+			<input type="radio" id="CR" name="tipoSolicitante" value="CR"> Central de Relacionamento
+			<input type="radio" id="Instrutor" name="tipoSolicitante" value="IN"> Instrutor
+			<input type="radio" id="Mobilizador" name="tipoSolicitante" value="MO"> Mobilizador <br>
+			<input type="radio" id="Regional" name="tipoSolicitante" value="RE"> Regional
+			<input type="radio" id="TecnicoCampo" name="tipoSolicitante" value="TC"> Tecnico de Campo											
+			<input type="radio" id="Usuário Interno" name="tipoSolicitante" value="UI"> Usuário Interno											
+		<!--
+		<label for="tipoSolicitante">Tipo de Solicitante</label>									
+		//<input type="text"  id="tipoSolicitante" name="tipoSolicitante" onfocus="javascript: buscarTipoSolicitante();" required />																
+		<input type="text"  id="tipoSolicitante" name="tipoSolicitante" required />
+		-->
+		
+		<label for="parceiros">Parceiros</label>
+		<!--  <input type="text"  id="parceiros" name="parceiros" onfocus="javascript: buscarParceiro();" required />  -->
+		<input type="text"  id="parceiros" name="parceiros" required />
+		<input type="hidden" id="parceirosId" name="parceirosId" value="">
+		
+		<label for="solicitante">Solicitante</label>
+		<input type="text" placeholder="Nome do solicitante" id="solicitante" name="solicitante">																												
+		<br>
+		
+		<!--
+		  <input class="button-primary" type="button" value="Pendente" onclick="myRes()">		
+		<input class="button-primary" type="button" value="Data da Resolução" onclick="myResData()">
+		 -->						
+		
+		<div class="resolucao">
+		<label for="resolucao">Resolução</label>
+		<textarea id="resolucao" name="resolucao" required /></textarea>
+		<input type="hidden" id="status" name="status" value="true" required />
+		</div>
+		<div class="displayChange">
+		<label for="dtRes">Data da Resolução</label>																												
+		<div class="row">
+			<input type="date" name="dtRes" id="dtRes" />										
+			<input type="time" name="hrRes" id="hrRes" />	
+			<input type="hidden" id="dataResolucao" name="dataResolucao" value="" required />	
+			<input type="hidden" id="horaResolucao" name="horaResolucao" value="" required />										
+		</div>
+		</div>
+		
+		<br>
+		<input class="button-primary" type="submit" name="Send" value="Send">
+	</div>
+</div>	
+</form>
+</div>
+</body>
+</html>

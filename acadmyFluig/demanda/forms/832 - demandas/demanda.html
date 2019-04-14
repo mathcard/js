@@ -1,0 +1,248 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="arquivo.css"/>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>	
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<!--  <script type="text/javascript" src="/js/funcoes.js"</script> -->
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form">
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title"><i class="fluigicon fluigicon-user icon-md"></i>Dados</h3>
+	</div>
+
+	<div class="panel-body">
+	
+	<div class="row">
+	<div class="form-group col-md-4" >
+		<label for="tipoProduto">Produto: *</label>
+			<!-- <select id="tipoProduto" name="tipoProduto" onChange="javascript: buscarCategoria();" required /> -->
+			<select class="form-control" id="tipoProduto" name="tipoProduto" dataset="dsMoedas" datasetkey="simbolo" datasetvalue="nomeMoeda" required >
+				<!--  <option value="Produto">Produto</option>  -->									
+			</select>
+	</div>
+	<div class="form-group col-md-4" >	
+		<label for="categoria">Categoria: *</label>
+			<!--  <select id="categoria" name="categoria" onChange="javascript: buscarSubCategoria();" required />  -->
+		<select class="form-control" id="categoria" name="categoria" dataset="dsCategoria" datasetkey="codigo" datasetvalue="nomeCategoria" required />												
+			</select>
+	</div>
+	<div class="form-group col-md-4" >
+		<label for="subCategoria">Sub Categoria: *</label>
+			<select class="form-control" id="subCategoria" name="subCategoria" required />
+				<option>Opções:</option>										
+			</select>
+	</div>
+	</div>
+	
+	<div class="form-group col-md-12" >	
+		<p><b>Tipo de Solicitante: *</b></p>																																				  
+			<label><input type="radio" id="Aluno" name="tipoSolicitante" value="AL"> Aluno</label>											
+			<label><input type="radio" id="CR" name="tipoSolicitante" value="CR"> Central de Relacionamento</label>		
+			<label><input type="radio" id="Instrutor" name="tipoSolicitante" value="IN"> Instrutor</label>
+			<label><input type="radio" id="Mobilizador" name="tipoSolicitante" value="MO"> Mobilizador</label>
+			<label><input type="radio" id="Regional" name="tipoSolicitante" value="RE"> Regional</label>
+			<label><input type="radio" id="TecnicoCampo" name="tipoSolicitante" value="TC"> Tecnico de Campo</label>											
+			<label><input type="radio" id="Usuário Interno" name="tipoSolicitante" value="UI"> Usuário Interno</label>
+	</div>											
+		<!--
+		<label for="tipoSolicitante">Tipo de Solicitante</label>									
+		//<input type="text"  id="tipoSolicitante" name="tipoSolicitante" onfocus="javascript: buscarTipoSolicitante();" required />																
+		<input type="text"  id="tipoSolicitante" name="tipoSolicitante" required />
+		-->
+	<div class="row">	
+		<div class="form-group col-md-6" >	
+			<label for="parceiros">Parceiros: *</label>
+			<!--  <input type="text"  id="parceiros" name="parceiros" onfocus="javascript: buscarParceiro();" required />  -->
+			<input class="form-control" type="text"  id="parceiros" name="parceiros" required />
+			<input class="form-control" type="hidden" id="parceirosId" name="parceirosId" value="">
+		</div>	
+		<div class="form-group col-md-6" >		
+			<label for="solicitante">Solicitante: *</label>
+			<!--  <input class="form-control" type="text" placeholder="Nome do solicitante" id="solicitante" name="solicitante"> -->																												
+		
+			<input
+			    			type="zoom"
+			    			id = "solicitante"
+			    			name="solicitante"
+			    			data-zoom="{
+			        			'displayKey':'nome',
+			        			'datasetId':'dsResponsaveis',	        			
+			        			'placeholder':'Escolha o usuário',
+			        			'fields':[
+		            				{
+		               					'field':'login',
+		               					'label':'Login'
+		            				},{
+			              				'field':'nome',
+			              				'label':'Nome',
+			              				'standard':'true'
+		            				}
+		        				]
+		     				}"
+						/>
+						
+						
+		
+		
+		</div>
+		
+		<div class="form-group col-md-2" >
+		<div class="displayChange">
+			<label for="dtSolicita">Data da Solicitação</label>																															
+				<input type="date" name="dtSolicita" id="dtSolicita" />										
+			<!-- 	<input type="time" name="hrSolicita" id="hrSolicita" onchange="javascript: dataRetroativa(); "/>  -->		
+				<input type="time" name="hrSolicita" id="hrSolicita" />
+				<input type="hidden" id="dataSolicitacao" name="dataSolicitacao" value="">								
+				<input type="hidden" id="horaSolicitacao" name="horaSolicitacao" value="">			
+		</div>
+		<br>	
+	</div> 
+		
+		
+	</div>	
+		<input class="button-primary" type="button" value="Retroativa" onclick="myRetro()">	
+		
+	</div>
+
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title"><i class="fluigicon fluigicon-user icon-md"></i>Resolução</h3>
+	</div>
+	<div class="panel-body">
+		
+	
+		<div class="form-group col-md-12" >	
+	 <div class="resolucao">  
+			<label for="resolucao">Descrição: *</label>
+			<textarea class="form-control" id="resolucao" name="resolucao" required /></textarea>
+			<input class="form-control" type="hidden" id="status" name="status" value="true" required />
+		 </div> 
+	</div>	
+			
+	 <div class="abacaxi"> 
+		<div class="row">
+		<div class="form-group col-md-2" >
+			<label for="dtRes">Data: * </label>																													
+				<input class="form-control" type="date" name="dtRes" id="dtRes" />													
+		</div>
+		<div class="form-group col-md-1" >
+			<label for="hrRes">Horário: *</label>
+				<input class="form-control" type="time" name="hrRes" id="hrRes" />
+		</div>
+		</div>	
+			<input class="form-control" type="hidden" id="dataResolucao" name="dataResolucao" value="" required />	
+			<input class="form-control" type="hidden" id="horaResolucao" name="horaResolucao" value="" required />										
+ 	</div>
+ 		<input class="button-primary" type="button" value="Pendente" addbuttonclass="btn btn-info" onclick="myRes()">				
+		<input class="button-primary" type="button" value="Data da Resolução" addbuttonclass="btn btn-info" onclick="myResData()">
+ 	  
+	</div>
+		
+		<br>
+	
+	
+	</div>
+</div>	
+	
+
+
+</div>	
+<button type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
+</body>
+
+
+
+<script>
+
+ 
+ window.onload = function () {	
+	dataAtual();
+};
+
+function myRetro(){
+	campo = $(".displayChange");		
+	campo.removeClass("displayChange");		
+	$("#dtSolicita").attr("required", true);
+	$("#hrSolicita").attr("required", true);
+	
+}
+			
+function myRes(){
+	campos = $(".resolucao");		
+	campos.addClass("displayChange");				
+	$("#resolucao").attr("disabled",true);
+	$('#status').val(false);
+	
+}
+
+function myResData(){
+	campos = $(".abacaxi");		
+	campos.removeClass("abacaxi");		
+	$("#dtRes").attr("required",true);
+	$("#hrRes").attr("required",true);
+}
+
+function dataRetroativa(){
+	var auxData = $('#dtSolicita').val();
+	var auxHora = $('#hrSolicita').val();
+	$('#dataSolicitacao').val(auxData);
+	$('#horaSolicitacao').val(auxHora);
+}
+
+function dataAtual(){
+	var x = new Date();
+	var dia = x.getDate();
+	var mes = x.getMonth();
+	var ano = x.getFullYear();
+	var hora = x.getHours();
+	var min = x.getMinutes();
+	
+	if(mes>=10){
+		mes = mes + 1;
+	}else{
+		mes = '0'+(mes+1);
+	}
+	
+	if((min>=10)&&(min<55)){
+		//min = min + 5;
+		minRes = min + 5;
+		horaRes = hora;
+	}else if(min>=55){
+		horaRes = hora + 1;
+		minRes = '01';
+	}else if(min==00){
+		min = '01';
+		minRes = '05';
+		horaRes = hora
+	}
+	else{
+		min = '0'+(min);
+		minRes = min + 5;
+		horaRes = hora
+	}
+	var dataHoje = ano+'-'+mes+'-'+dia;
+	var horaSol = hora+':'+min;
+	var horaResPadrao = horaRes+':'+minRes;
+	
+	console.log(dataHoje);
+	console.log(horaSol);
+	console.log(horaResPadrao);
+	
+	$('#dataSolicitacao').val(dataHoje);
+	$('#horaSolicitacao').val(horaSol);
+	$('#dataResolucao').val(dataHoje);
+	$('#horaResolucao').val(horaResPadrao);
+}
+
+</script>
+
+
+</html>
