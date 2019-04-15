@@ -150,6 +150,55 @@
 	</div>
 </div>	
 	
+	<div class="form-group col-md-6" >		
+			<label for="teste">Teste</label>		
+			<input
+			    	type="zoom"
+			    	id = "teste"
+			    	name="teste"
+			    	data-zoom="{
+			        			'displayKey':'nome',
+			        			'datasetId':'dsResponsaveis',	        			
+			        			'placeholder':'Escolha o usuário',
+			        			'fields':[
+		            				{
+		               					'field':'login',
+		               					'label':'Login'
+		            				},{
+			              				'field':'nome',
+			              				'label':'Nome',
+			              				'standard':'true'
+		            				}
+		        				]
+		     				}"
+						/>															
+		</div>
+		
+			<div class="form-group col-md-6" >		
+			<label for="test2">Teste2</label>		
+			<input
+			    	type="zoom"
+			    	id = "teste2"
+			    	name="teste2"
+			    	data-zoom="{
+			        			'displayKey':'nome',			        				        		
+			        			'placeholder':'Escolha o usuário',
+			        			'fields':[
+		            				{
+		               					'field':'login',
+		               					'label':'Login'
+		            				},{
+			              				'field':'nome',
+			              				'label':'Nome',
+			              				'standard':'true'
+		            				}
+		        				]
+		     				}"
+		     				onclick="setSelectedZoomItem()"
+		     				
+						/>															
+		</div>	
+	
 
 
 </div>	
@@ -240,6 +289,20 @@ function dataAtual(){
 	$('#horaSolicitacao').val(horaSol);
 	$('#dataResolucao').val(dataHoje);
 	$('#horaResolucao').val(horaResPadrao);
+}
+
+
+
+function setSelectedZoomItem(teste) {
+    if(teste.login == "academy.aluno"){
+    reloadZoomFilterValues("teste2", "teste" + selectedItem["login"]);
+  }
+}
+
+function setSelectedZoomItem(selectedItem) {
+    if(selectedItem.inputId == "id do campo"){
+    reloadZoomFilterValues("nome_do_campo_de_zoom_que_receberá_o_filtro", "campo_a_ser_filtrado," + selectedItem["valor_que_ira_filtrar"]);
+  }
 }
 
 </script>
